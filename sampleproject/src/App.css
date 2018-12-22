@@ -1,0 +1,20 @@
+.flex-div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; }
+
+body {
+  background-repeat: repeat;
+  background: url("./background/crossword.png"); }
+
+.main-container {
+  padding: 1rem; }
+
+.img-tile {
+  height: max-content !important; }
+
+.img-tile img {
+  top: 0;
+  transform: translateY(0%);
+  left: 0;
+  width: 100%; }
