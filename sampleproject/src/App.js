@@ -7,6 +7,8 @@ import NavBar from "./components/Nav/navBar";
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import {withStyles} from '@material-ui/core/styles';
+import {Carousel} from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const imageContext = require.context('./imgs/Prints', false, /\.(png|jpe?g)$/);
 const images = imageContext.keys().map(imageContext);
@@ -94,7 +96,15 @@ class AlternateApp extends Component {
                     <Dialog className="image-dialog" open={this.state.isImageDialogActive} onClose={() => {
                         this.setState({isImageDialogActive: false})
                     }}>
-                        <img className="art-image full-width" src={this.state.activeImageSrc}/>
+                        <Carousel showThumbs={false}>
+                            {bookEndImageSrcs.map((imgSrc, index) => <LazyLoad key={index} once>
+                                    <img className="art-image full-width" src={imgSrc} onClick={() => {
+                                        this.setState({activeImageSrc: imgSrc, isImageDialogActive: true})
+                                    }}/>
+                                </LazyLoad>
+                            )}
+                        </Carousel>
+                        {/*<img className="art-image full-width" src={this.state.activeImageSrc}/>*/}
                     </Dialog>
                 </div>
             </div>

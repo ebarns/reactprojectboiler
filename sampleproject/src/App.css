@@ -43,5 +43,11 @@ body {
 .top-spacing {
   margin-top: 2rem; }
 
+.image-dialog .carousel .slider-wrapper.axis-horizontal .slider .slide {
+  display: flex;
+  align-items: center;
+  background-color: transparent; }
+
 .image-dialog > div > div {
+  background-color: transparent;
   width: 75%; }
