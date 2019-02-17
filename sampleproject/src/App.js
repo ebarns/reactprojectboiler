@@ -21,7 +21,7 @@ const styles = theme => ({
         justifyContent: 'space-around',
         overflow: 'hidden',
         marginTop: '2rem',
-        backgroundColor: theme.palette.background.paper,
+        maxWidth: '1200px',
     },
     icon: {
         position: 'absolute',
@@ -76,7 +76,7 @@ class AlternateApp extends Component {
             <div id="prints" className={"main-container"}>
                 <NavBar/>
                 <div className={classes.grid}>
-                    <GridList cols={3}>
+                    <GridList style={{alignItems: "center"}} cols={2}>
                         {images.map((imgSrc, index) => <GridListTile className={"image-tile"} key={index}>
                                 <LazyLoad key={index} once>
                                     <img className="art-image full-width" src={imgSrc} onClick={() => {

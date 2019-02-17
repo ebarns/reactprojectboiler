@@ -22,6 +22,9 @@ body {
 }
 
 .main-container {
+  padding: 1rem;
+  display:flex;
+  justify-content: center;
   .image-tile {
     height: fit-content !important;
     height: -moz-fit-content !important;
