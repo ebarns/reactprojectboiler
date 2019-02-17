@@ -54,7 +54,7 @@ class Header extends Component {
                         <Paper>
                           <ClickAwayListener onClickAway={this.handleClose}>
                             <MenuList>
-                              <MenuItem onClick={this.handleClose}>About</MenuItem>
+                              <MenuItem onClick={this.handleClose}><a href="#about">About</a></MenuItem>
                               <MenuItem onClick={this.handleClose}>3-D Work</MenuItem>
                               <MenuItem onClick={this.handleClose}>Print Work</MenuItem>
                             </MenuList>

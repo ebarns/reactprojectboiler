@@ -1,0 +1,17 @@
+.main-nav {
+  padding: 0.5rem; }
+  .main-nav a {
+    text-decoration: none; }
+  .main-nav h1 {
+    font-size: 1.2rem; }
+  .main-nav .prints:hover, .main-nav .active-prints {
+    background-color: rgba(255, 165, 0, 0.7); }
+  .main-nav .sculpture:hover, .main-nav .active-sculpture {
+    background-color: rgba(255, 20, 100, 0.7); }
+  .main-nav .about:hover, .main-nav .active-about {
+    background-color: rgba(180, 255, 0, 0.7); }
+  .main-nav .nav-item {
+    border-radius: 1rem;
+    margin: 0.25rem 0; }
+    .main-nav .nav-item:hover {
+      transition: 0.5s; }

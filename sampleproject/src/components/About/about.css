@@ -1,0 +1,15 @@
+.about-bullet {
+  display: flex;
+  margin: 1rem; }
+  .about-bullet .mustache-bullet {
+    min-width: 3rem;
+    height: 2rem; }
+  .about-bullet .bullet {
+    padding-top: 0.3rem;
+    padding-left: 1rem;
+    font-size: 1.25rem; }
+
+.footer {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem; }

@@ -7,14 +7,37 @@ body {
   background-repeat: repeat;
   background: url("./background/crossword.png"); }
 
+.menu-icon {
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  z-index: 200;
+  border-radius: 10%;
+  padding: 0.25rem; }
+
 .main-container {
   padding: 1rem; }
 
+.main-container .image-tile {
+  height: fit-content !important;
+  width: 300px; }
+
 .img-tile {
   height: max-content !important; }
+  .img-tile img {
+    top: 0;
+    transform: translateY(0%);
+    left: 0;
+    width: 100%; }
 
-.img-tile img {
-  top: 0;
-  transform: translateY(0%);
-  left: 0;
+.text-body {
+  padding: 1rem; }
+
+.full-width {
   width: 100%; }
+
+.top-spacing {
+  margin-top: 2rem; }
+
+.image-dialog > div > div {
+  width: 75%;
+  max-width: 400px; }
