@@ -1,34 +1,37 @@
 .flex-div {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
-body { 
+body {
   background-repeat: repeat;
   background: url("./background/crossword.png");
 }
 
-.menu-icon{
-      background: rgba(255,255,255,0.5);
-    position: fixed;
-    z-index: 200;
-    border-radius: 10%;
-    padding: 0.25rem;
+.menu-icon {
+  background: rgba(255, 255, 255, 0.5);
+  position: fixed;
+  z-index: 200;
+  border-radius: 10%;
+  padding: 0.25rem;
 }
 
 .main-container {
-  padding: 1rem; 
+  padding: 1rem;
 }
 
 .main-container {
   .image-tile {
     height: fit-content !important;
+    height: -moz-fit-content !important;
     width: 300px;
   }
 }
-.img-tile { 
+
+.img-tile {
   height: max-content !important;
+
   img {
     top: 0;
     transform: translateY(0%);
@@ -49,7 +52,6 @@ body {
   margin-top: 2rem;
 }
 
-.image-dialog > div > div{
-    width: 75%; 
-  max-width: 400px;
+.image-dialog > div > div {
+  width: 75%;
 }

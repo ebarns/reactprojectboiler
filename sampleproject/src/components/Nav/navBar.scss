@@ -1,30 +1,32 @@
 .main-nav {
-	padding: 0.5rem;
+  padding: 0.5rem;
 
-	a {
-		text-decoration: none;
-	}
-	h1{
-		font-size: 1.2rem;
-	}
+  a {
+    text-decoration: none;
+  }
 
-	.prints:hover, .active-prints{
-		background-color: rgba(255, 165, 0, 0.7);
-	}
+  h1 {
+    font-size: 1.2rem;
+  }
 
-	.sculpture:hover, .active-sculpture {
-		background-color: rgba(255, 20, 100, 0.7);
-	}
+  .prints:hover, .active-prints {
+    background-color: rgba(255, 165, 0, 0.7);
+  }
 
-	.about:hover, .active-about {
-		background-color: rgba(180, 255, 0, 0.7);
-	}
+  .sculpture:hover, .active-sculpture {
+    background-color: rgba(255, 20, 100, 0.7);
+  }
 
-	.nav-item{
-		border-radius: 1rem;
-		margin: 0.25rem 0;
-		&:hover{
-			transition: 0.5s;
-		}
-	}
+  .about:hover, .active-about {
+    background-color: rgba(180, 255, 0, 0.7);
+  }
+
+  .nav-item {
+    border-radius: 1rem;
+    margin: 0.25rem 0;
+
+    &:hover {
+      transition: 0.5s;
+    }
+  }
 }

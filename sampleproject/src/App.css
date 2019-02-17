@@ -19,6 +19,7 @@ body {
 
 .main-container .image-tile {
   height: fit-content !important;
+  height: -moz-fit-content !important;
   width: 300px; }
 
 .img-tile {
@@ -39,5 +40,4 @@ body {
   margin-top: 2rem; }
 
 .image-dialog > div > div {
-  width: 75%;
-  max-width: 400px; }
+  width: 75%; }
