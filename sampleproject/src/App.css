@@ -12,10 +12,17 @@ body {
   position: fixed;
   z-index: 200;
   border-radius: 10%;
-  padding: 0.25rem; }
+  padding: 0.25rem;
+  margin-left: 0.5rem; }
 
 .main-container {
   padding: 1rem; }
+
+.image-grid {
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  max-width: 850px; }
 
 .main-container {
   padding: 1rem;
@@ -24,7 +31,9 @@ body {
   .main-container .image-tile {
     height: fit-content !important;
     height: -moz-fit-content !important;
-    width: 300px; }
+    width: fit-content;
+    width: -moz-fit-content;
+    list-style-type: none; }
 
 .img-tile {
   height: max-content !important; }
@@ -46,8 +55,16 @@ body {
 .image-dialog .carousel .slider-wrapper.axis-horizontal .slider .slide {
   display: flex;
   align-items: center;
-  background-color: transparent; }
+  background-color: transparent;
+  flex-direction: unset;
+  flex-flow: unset;
+  justify-content: center; }
 
 .image-dialog > div > div {
   background-color: transparent;
   width: 75%; }
+
+.carousel .slide img {
+  /*height: -webkit-fill-available;*/
+  max-width: 33rem;
+  width: 100%; }

@@ -15,10 +15,18 @@ body {
   z-index: 200;
   border-radius: 10%;
   padding: 0.25rem;
+  margin-left: 0.5rem;
 }
 
 .main-container {
   padding: 1rem;
+}
+
+.image-grid {
+  margin:auto;
+  margin-top: 2rem;
+  padding: 1rem;
+  max-width: 850px;
 }
 
 .main-container {
@@ -29,7 +37,9 @@ body {
   .image-tile {
     height: fit-content !important;
     height: -moz-fit-content !important;
-    width: 300px;
+    width: fit-content;
+    width: -moz-fit-content;
+    list-style-type: none;
   }
 }
 
@@ -61,6 +71,10 @@ body {
     display: flex;
     align-items: center;
     background-color: transparent;
+    flex-direction: unset;
+    flex-flow: unset;
+    justify-content: center;
+    
   }
 
   > div > div {
@@ -68,3 +82,10 @@ body {
     width: 75%;
   }
 }
+
+.carousel .slide img {
+  /*height: -webkit-fill-available;*/
+  max-width: 33rem;
+    width: 100%;
+}
+

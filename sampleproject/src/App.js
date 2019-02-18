@@ -9,6 +9,7 @@ import GridListTile from '@material-ui/core/GridListTile';
 import {withStyles} from '@material-ui/core/styles';
 import {Carousel} from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Grid from '@material-ui/core/Grid';
 
 const imageContext = require.context('./imgs/Prints', false, /\.(png|jpe?g)$/);
 const images = imageContext.keys().map(imageContext);
@@ -16,14 +17,29 @@ const images = imageContext.keys().map(imageContext);
 const bookend = require.context('./imgs/Sculpture/BookEnd', false, /\.(png|jpe?g)$/);
 const bookEndImageSrcs = bookend.keys().map(bookend);
 
+const spoon = require.context('./imgs/Sculpture/Spoon', false, /\.(png|jpe?g)$/);
+const spoonImgSrcs = spoon.keys().map(spoon);
+
+const hold = require.context('./imgs/Sculpture/holdIt', false, /\.(png|jpe?g)$/);
+const holdImgSrcs = hold.keys().map(hold);
+
+const tradicao = require.context('./imgs/Sculpture/tradicao', false, /\.(png|jpe?g)$/);
+const tradicaoImgSrcs = tradicao.keys().map(tradicao);
+
+
+const skinnyDipping = require.context('./imgs/Sculpture/skinnyDipping', false, /\.(png|jpe?g)$/);
+const skinnyDippingImgSrcs = skinnyDipping.keys().map(skinnyDipping);
+
+const bubbleBoys = require.context('./imgs/Sculpture/bubbleBoys', false, /\.(png|jpe?g)$/);
+const bubbleBoysImgSrcs = bubbleBoys.keys().map(bubbleBoys);
+
+const untitled = require.context('./imgs/Sculpture/untitled', false, /\.(png|jpe?g)$/);
+const untitledImgSrcs = untitled.keys().map(untitled);
+
 const styles = theme => ({
-    grid: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        marginTop: '2rem',
-        maxWidth: '1200px',
+    container: {
+      display:"flex",
+      justifyContent: "center"
     },
     icon: {
         position: 'absolute',
@@ -51,58 +67,61 @@ class AlternateApp extends Component {
         super(props);
         this.state = {
             isImageDialogActive: false,
-            activeImageSrc: ""
+            activeImageSrc: "",
+            activeImageSrcs: [],
         };
     }
 
-    renderBookEnd() {
+    renderImageSeriesThumbnail(imgSrcList) {
         return (
-            <GridListTile className={"image-tile"} key={"book"}>
-                <LazyLoad key={"bookend"} once>
-                    <img alt="BookEnd" className="art-image full-width" src={bookEndImageSrcs[0]} onClick={() => {
-                        this.setState({activeImageSrc: bookEndImageSrcs[0], isImageDialogActive: true})
+          <Grid item key={imgSrcList[0]} xs={12} lg={4} md={6}>
+            <GridListTile className={"image-tile"}>
+                <LazyLoad once>
+                    <img alt="BookEnd" className="art-image full-width" src={imgSrcList[0]} onClick={() => {
+                        this.setState({activeImageSrcs: imgSrcList, isImageDialogActive: true})
                     }}/>
                 </LazyLoad>
                 <div className={this.props.classes.icon}>
-                    0
+                    {imgSrcList.length}
                 </div>
             </GridListTile>
+            </Grid>
         );
     }
 
     render() {
-        console.log("%c RE-RENDERING MAIN", 'color : red; font-size: 2rem;')
-        console.log(this.props);
         const {classes} = this.props;
         return (
             <div id="prints" className={"main-container"}>
                 <NavBar/>
-                <div className={classes.grid}>
-                    <GridList style={{alignItems: "center"}} cols={2}>
-                        {images.map((imgSrc, index) => <GridListTile className={"image-tile"} key={index}>
+                <div>
+                  <div className={"image-grid"}>
+                    <Grid container>
+                        {images.map((imgSrc, index) => <Grid item key={index} sm={6} xs={12} lg={4} md={6}><GridListTile className={"image-tile"} >
                                 <LazyLoad key={index} once>
                                     <img className="art-image full-width" src={imgSrc} onClick={() => {
-                                        this.setState({activeImageSrc: imgSrc, isImageDialogActive: true})
+                                        this.setState({activeImageSrcs: [imgSrc], isImageDialogActive: true})
                                     }}/>
                                 </LazyLoad>
-                                <div className={classes.icon}>
-                                    0
-                                </div>
                             </GridListTile>
+
+                      </Grid>
                         )}
-                        {this.renderBookEnd()}
-                    </GridList>
+                        {this.renderImageSeriesThumbnail(bookEndImageSrcs)}
+                        {this.renderImageSeriesThumbnail(spoonImgSrcs)}
+                        {this.renderImageSeriesThumbnail(bubbleBoysImgSrcs)}
+                        {this.renderImageSeriesThumbnail(holdImgSrcs)}
+                        {this.renderImageSeriesThumbnail(untitledImgSrcs)}
+                        {this.renderImageSeriesThumbnail(tradicaoImgSrcs)}
+                        {this.renderImageSeriesThumbnail(skinnyDippingImgSrcs)}
+                        </Grid>
+                        </div>
                     <About/>
                     <Dialog className="image-dialog" open={this.state.isImageDialogActive} onClose={() => {
                         this.setState({isImageDialogActive: false})
                     }}>
                         <Carousel showThumbs={false}>
-                            {bookEndImageSrcs.map((imgSrc, index) => <LazyLoad key={index} once>
-                                    <img className="art-image full-width" src={imgSrc} onClick={() => {
-                                        this.setState({activeImageSrc: imgSrc, isImageDialogActive: true})
-                                    }}/>
-                                </LazyLoad>
-                            )}
+                            {this.state.activeImageSrcs.map((imgSrc, index) => <img className="art-image full-width" key={index} src={imgSrc}/>)}
                         </Carousel>
                         {/*<img className="art-image full-width" src={this.state.activeImageSrc}/>*/}
                     </Dialog>
