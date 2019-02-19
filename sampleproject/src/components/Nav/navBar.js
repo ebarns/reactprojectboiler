@@ -34,7 +34,6 @@ class NavBar extends Component {
     }
 
     render() {
-        console.warn(this.state);
         return <div>
             <MenuIcon className={"menu-icon"} onClick={() => this.setState({isNavOpen: true})}/>
             <Drawer open={this.state.isNavOpen} onClose={this.closeNav}>

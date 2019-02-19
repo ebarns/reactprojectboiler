@@ -36,10 +36,32 @@ const bubbleBoysImgSrcs = bubbleBoys.keys().map(bubbleBoys);
 const untitled = require.context('./imgs/Sculpture/untitled', false, /\.(png|jpe?g)$/);
 const untitledImgSrcs = untitled.keys().map(untitled);
 
+const bookEnd = require.context('./imgs/Sculpture/BookEnd', false, /\.(png|jpe?g)$/);
+const bookEndImgSrcs = bookEnd.keys().map(bookEnd);
+
+
+const chinesenewyear = require.context('./imgs/Prints/chinesenewyear', false, /\.(png|jpe?g)$/);
+const chinesenewyearImgSrcs = chinesenewyear.keys().map(chinesenewyear);
+
+const islands = require.context('./imgs/Prints/islands', false, /\.(png|jpe?g)$/);
+const islandsImgSrcs = islands.keys().map(islands);
+
+const lemanja = require.context('./imgs/Prints/lemanja', false, /\.(png|jpe?g)$/);
+const lemanjaImgSrcs = lemanja.keys().map(lemanja);
+
+const workhardplayhard = require.context('./imgs/Prints/workhardplayhard', false, /\.(png|jpe?g)$/);
+const workhardplayhardImgSrcs = workhardplayhard.keys().map(workhardplayhard);
+
+const boredTeen = require.context('./imgs/Prints/boredteen', false, /\.(png|jpe?g)$/);
+const boredTeenImgSrcs = boredTeen.keys().map(boredTeen);
+
 const styles = theme => ({
     container: {
       display:"flex",
       justifyContent: "center"
+    },
+    carouselItem: {
+        margin: "auto"
     },
     icon: {
         position: 'absolute',
@@ -72,9 +94,9 @@ class AlternateApp extends Component {
         };
     }
 
-    renderImageSeriesThumbnail(imgSrcList) {
+    renderImageSeriesThumbnail(imgSrcList, isBeginning=false, isFullWidth=false) {
         return (
-          <Grid item key={imgSrcList[0]} xs={12} lg={4} md={6}>
+          <Grid item id={isBeginning  ? "sculpture" : ""} className={this.props.classes.carouselItem} key={imgSrcList[0]} xs={12} sm={isFullWidth ? 12 : 6} lg={isFullWidth ? 12 : 4} md={isFullWidth ? 12 : 6}>
             <GridListTile className={"image-tile"}>
                 <LazyLoad once>
                     <img alt="BookEnd" className="art-image full-width" src={imgSrcList[0]} onClick={() => {
@@ -97,7 +119,7 @@ class AlternateApp extends Component {
                 <div>
                   <div className={"image-grid"}>
                     <Grid container>
-                        {images.map((imgSrc, index) => <Grid item key={index} sm={6} xs={12} lg={4} md={6}><GridListTile className={"image-tile"} >
+                        {images.map((imgSrc, index) => <Grid item  key={index} sm={6} xs={12} lg={4} md={6}><GridListTile className={"image-tile"} >
                                 <LazyLoad key={index} once>
                                     <img className="art-image full-width" src={imgSrc} onClick={() => {
                                         this.setState({activeImageSrcs: [imgSrc], isImageDialogActive: true})
@@ -107,13 +129,19 @@ class AlternateApp extends Component {
 
                       </Grid>
                         )}
-                        {this.renderImageSeriesThumbnail(bookEndImageSrcs)}
-                        {this.renderImageSeriesThumbnail(spoonImgSrcs)}
-                        {this.renderImageSeriesThumbnail(bubbleBoysImgSrcs)}
-                        {this.renderImageSeriesThumbnail(holdImgSrcs)}
-                        {this.renderImageSeriesThumbnail(untitledImgSrcs)}
+                        {this.renderImageSeriesThumbnail(chinesenewyearImgSrcs,true)}
+                        {this.renderImageSeriesThumbnail(boredTeenImgSrcs,true)}
+                        {this.renderImageSeriesThumbnail(lemanjaImgSrcs,true)}
+                        {this.renderImageSeriesThumbnail(workhardplayhardImgSrcs,true)}
+                        {this.renderImageSeriesThumbnail(islandsImgSrcs,true, true)}
+
+                        {this.renderImageSeriesThumbnail(bookEndImageSrcs,true)}
                         {this.renderImageSeriesThumbnail(tradicaoImgSrcs)}
                         {this.renderImageSeriesThumbnail(skinnyDippingImgSrcs)}
+                        {this.renderImageSeriesThumbnail(untitledImgSrcs)}
+                        {this.renderImageSeriesThumbnail(bubbleBoysImgSrcs)}
+                        {this.renderImageSeriesThumbnail(holdImgSrcs)}
+                        {this.renderImageSeriesThumbnail(spoonImgSrcs, true, true)}
                         </Grid>
                         </div>
                     <About/>
@@ -121,7 +149,7 @@ class AlternateApp extends Component {
                         this.setState({isImageDialogActive: false})
                     }}>
                         <Carousel showThumbs={false}>
-                            {this.state.activeImageSrcs.map((imgSrc, index) => <img className="art-image full-width" key={index} src={imgSrc}/>)}
+                            {this.state.activeImageSrcs.map((imgSrc, index) => <Grid item key={index} lg={12}><img className="art-image full-width" key={index} src={imgSrc}/></Grid>)}
                         </Carousel>
                         {/*<img className="art-image full-width" src={this.state.activeImageSrc}/>*/}
                     </Dialog>
@@ -132,16 +160,3 @@ class AlternateApp extends Component {
 }
 
 export default withStyles(styles)(AlternateApp);
-
-// getSize(filename){
-//   if (filename.length > 0){
-//     const fileNameInfo = filename.split(".");
-//     const sizeInfo = fileNameInfo[fileNameInfo.length - 3];
-//     const sizeReading = sizeInfo.slice(sizeInfo.length - 3);
-//     if (sizeReading.slice(0,2) === "SZ"){
-//       console.warn(sizeReading.slice(2));
-//       return Number(sizeReading.slice(2));
-//     }
-//   }
-//   return 1;
-// }
