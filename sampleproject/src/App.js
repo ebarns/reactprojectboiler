@@ -39,6 +39,9 @@ const untitledImgSrcs = untitled.keys().map(untitled);
 const bookEnd = require.context('./imgs/Sculpture/BookEnd', false, /\.(png|jpe?g)$/);
 const bookEndImgSrcs = bookEnd.keys().map(bookEnd);
 
+const gig = require.context('./imgs/Prints/gig', false, /\.(png|jpe?g)$/);
+const gigImgSrcs = gig.keys().map(gig);
+
 
 const chinesenewyear = require.context('./imgs/Prints/chinesenewyear', false, /\.(png|jpe?g)$/);
 const chinesenewyearImgSrcs = chinesenewyear.keys().map(chinesenewyear);
@@ -61,7 +64,8 @@ const styles = theme => ({
       justifyContent: "center"
     },
     carouselItem: {
-        margin: "auto"
+        margin: "auto",
+        padding: "0.5rem"
     },
     icon: {
         position: 'absolute',
@@ -96,7 +100,7 @@ class AlternateApp extends Component {
 
     renderImageSeriesThumbnail(imgSrcList, isBeginning=false, isFullWidth=false) {
         return (
-          <Grid item id={isBeginning  ? "sculpture" : ""} className={this.props.classes.carouselItem} key={imgSrcList[0]} xs={12} sm={isFullWidth ? 12 : 6} lg={isFullWidth ? 12 : 4} md={isFullWidth ? 12 : 6}>
+          <Grid item id={isBeginning  ? "sculpture" : ""} className={this.props.classes.carouselItem} key={imgSrcList[0]} xs={12} sm={isFullWidth ? 12 : 6} lg={isFullWidth ? 8 : 4} md={isFullWidth ? 12 : 6}>
             <GridListTile className={"image-tile"}>
                 <LazyLoad once>
                     <img alt="BookEnd" className="art-image full-width" src={imgSrcList[0]} onClick={() => {
@@ -111,6 +115,11 @@ class AlternateApp extends Component {
         );
     }
 
+    isFullScreen(srcs ,index, size, isLarge=false){
+        console.warn(srcs.length -1, size, index, (index === (srcs.length - 1) ));
+        return (index === srcs.length - 6  || (index === (srcs.length - 1) )) ? (isLarge ? 8 : 12) : size
+    }
+
     render() {
         const {classes} = this.props;
         return (
@@ -119,7 +128,7 @@ class AlternateApp extends Component {
                 <div>
                   <div className={"image-grid"}>
                     <Grid container>
-                        {images.map((imgSrc, index) => <Grid item  key={index} sm={6} xs={12} lg={4} md={6}><GridListTile className={"image-tile"} >
+                        {images.map((imgSrc, index) => <Grid item className={this.props.classes.carouselItem} key={index} sm={this.isFullScreen(images,index,6)} xs={12} lg={this.isFullScreen(images,index,4,true)} md={this.isFullScreen(images,index,6)}><GridListTile className={"image-tile"} >
                                 <LazyLoad key={index} once>
                                     <img className="art-image full-width" src={imgSrc} onClick={() => {
                                         this.setState({activeImageSrcs: [imgSrc], isImageDialogActive: true})
@@ -129,11 +138,12 @@ class AlternateApp extends Component {
 
                       </Grid>
                         )}
-                        {this.renderImageSeriesThumbnail(chinesenewyearImgSrcs,true)}
-                        {this.renderImageSeriesThumbnail(boredTeenImgSrcs,true)}
-                        {this.renderImageSeriesThumbnail(lemanjaImgSrcs,true)}
-                        {this.renderImageSeriesThumbnail(workhardplayhardImgSrcs,true)}
-                        {this.renderImageSeriesThumbnail(islandsImgSrcs,true, true)}
+                        {this.renderImageSeriesThumbnail(chinesenewyearImgSrcs)}
+                        {this.renderImageSeriesThumbnail(gigImgSrcs)}
+                        {this.renderImageSeriesThumbnail(boredTeenImgSrcs)}
+                        {this.renderImageSeriesThumbnail(lemanjaImgSrcs)}
+                        {this.renderImageSeriesThumbnail(workhardplayhardImgSrcs)}
+                        {this.renderImageSeriesThumbnail(islandsImgSrcs,false,true)}
 
                         {this.renderImageSeriesThumbnail(bookEndImageSrcs,true)}
                         {this.renderImageSeriesThumbnail(tradicaoImgSrcs)}

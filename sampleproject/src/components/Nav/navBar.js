@@ -56,7 +56,7 @@ class NavBar extends Component {
                                 <ListItem button onClick={() => this.setActiveTab("sculpture")}
                                           className={`nav-item sculpture ${this.tabIsActive("sculpture")}`}
                                           key={"Scupltures"}>
-                                    <ListItemText primary={"Scupltures"}/>
+                                    <ListItemText primary={"Sculptures"}/>
                                 </ListItem>
                             </a>
                             <a href="#about">

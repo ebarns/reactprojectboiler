@@ -31,7 +31,7 @@
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar  --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start": "webpack-dev-server --mode development --open --hot",
-    "build": "build css && webpack --mode production",
+    "build": "npm run build-css && webpack --mode production",
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
