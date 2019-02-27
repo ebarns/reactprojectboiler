@@ -172,8 +172,6 @@ class AlternateApp extends Component {
     }
 
     render() {
-        console.warn(fourth);
-        const {classes} = this.props;
         return (
             <div id="prints" className={"main-container"}>
                 <NavBar/>
@@ -191,7 +189,6 @@ class AlternateApp extends Component {
                             {this.state.activeImageSrcs.map((imgSrc, index) => <Grid item key={index} lg={12}><img
                                 className="art-image full-width" key={index} src={imgSrc}/></Grid>)}
                         </Carousel>
-                        {/*<img className="art-image full-width" src={this.state.activeImageSrc}/>*/}
                     </Dialog>
                 </div>
             </div>
