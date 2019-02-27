@@ -6,7 +6,8 @@ import List from '@material-ui/core/List';
 import MenuIcon from '@material-ui/icons/Menu';
 import './navBar.css';
 
-class NavBar extends Component {
+class
+NavBar extends Component {
 
     constructor(props) {
         super(props);

@@ -23,7 +23,7 @@ body {
 }
 
 .image-grid {
-  margin:auto;
+  margin: auto;
   margin-top: 2rem;
   padding: 1rem;
   max-width: 850px;
@@ -67,7 +67,8 @@ body {
 }
 
 .image-dialog {
-padding-right: 0 !important;
+  padding-right: 0 !important;
+
   .carousel .slider-wrapper.axis-horizontal .slider .slide {
     margin: auto;
     background-color: transparent;
@@ -85,18 +86,22 @@ padding-right: 0 !important;
 
     margin: 0;
   }
-.carousel 
-{
-  .slide img {
-    width: auto;
-    vertical-align: top;
-    border: 0;
-    max-height: calc(100vh - 6rem);
-    max-width:100%;
-  }
 
-  .slider-wrapper {
-    width: 100%;
+  .carousel {
+    .slide img {
+      width: auto;
+      vertical-align: top;
+      border: 0;
+      max-height: calc(100vh - 6rem);
+      max-width: 100%;
+    }
+
+    .slider-wrapper {
+      width: 100%;
+    }
   }
 }
+
+.cursor {
+  cursor: pointer;
 }

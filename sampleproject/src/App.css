@@ -74,3 +74,6 @@ body {
     max-width: 100%; }
   .image-dialog .carousel .slider-wrapper {
     width: 100%; }
+
+.cursor {
+  cursor: pointer; }

@@ -58,10 +58,60 @@ const workhardplayhardImgSrcs = workhardplayhard.keys().map(workhardplayhard);
 const boredTeen = require.context('./imgs/Prints/boredteen', false, /\.(png|jpe?g)$/);
 const boredTeenImgSrcs = boredTeen.keys().map(boredTeen);
 
+import voltando from "./imgs/Prints/VoltandoPraCasaSZ.jpg"
+import fourth from "./imgs/Prints/4. 4th of JulySZ2.jpg";
+import Carnaval from "./imgs/Prints/CarnavalSZ2.jpg";
+import BrainerdRoad from "./imgs/Prints/BrainerdRoad.jpg";
+import AnoNovo from "./imgs/Prints/AnoNovo.jpg";
+import ComoUmaOndaNoMar from "./imgs/Prints/ComoUmaOndaNoMar.jpg";
+import Hazy from "./imgs/Prints/Hazy.jpg";
+import Ops from "./imgs/Prints/Ops.jpg";
+import Scars from "./imgs/Prints/Scars.jpg";
+import TrespassersOnly from "./imgs/Prints/TrespassersOnly.jpg";
+import BoozyBlueprint from "./imgs/Prints/BoozyBlueprint.jpg";
+import MojitosandCabins from "./imgs/Prints/MojitosandCabins.jpg";
+import AHotDay from "./imgs/Prints/AHotDay.jpg";
+import BubbleBath from "./imgs/Prints/BubbleBath.jpg";
+import CelebracaoSolo from "./imgs/Prints/CelebracaoSolo.jpg";
+import untitledPrint from "./imgs/Prints/1C. UntitledSZ2.jpg";
+
+
+const imageData = [
+    [voltando],
+    gigImgSrcs,
+    chinesenewyearImgSrcs,
+    [fourth],
+    [Carnaval],
+    [BrainerdRoad],
+    [AnoNovo],
+    [ComoUmaOndaNoMar],
+    boredTeenImgSrcs,
+    islandsImgSrcs,
+    [untitledPrint],
+    [Hazy],
+    [Ops],
+    [Scars],
+    lemanjaImgSrcs,
+    [TrespassersOnly],
+    workhardplayhardImgSrcs,
+    [BoozyBlueprint],
+    [MojitosandCabins],
+    [AHotDay],
+    [BubbleBath],
+    bookEndImageSrcs,
+    tradicaoImgSrcs,
+    untitledImgSrcs,
+    skinnyDippingImgSrcs,
+    bubbleBoysImgSrcs,
+    holdImgSrcs,
+    [CelebracaoSolo],
+    spoonImgSrcs,
+];
+
 const styles = theme => ({
     container: {
-      display:"flex",
-      justifyContent: "center"
+        display: "flex",
+        justifyContent: "center"
     },
     carouselItem: {
         margin: "auto",
@@ -98,68 +148,48 @@ class AlternateApp extends Component {
         };
     }
 
-    renderImageSeriesThumbnail(imgSrcList, isBeginning=false, isFullWidth=false) {
+    renderImageSeriesThumbnail(imgSrcList, isBeginning = false, isFullWidth = false) {
         return (
-          <Grid item id={isBeginning  ? "sculpture" : ""} className={this.props.classes.carouselItem} key={imgSrcList[0]} xs={12} sm={isFullWidth ? 12 : 6} lg={isFullWidth ? 8 : 4} md={isFullWidth ? 12 : 6}>
-            <GridListTile className={"image-tile"}>
-                <LazyLoad once>
-                    <img alt="BookEnd" className="art-image full-width" src={imgSrcList[0]} onClick={() => {
-                        this.setState({activeImageSrcs: imgSrcList, isImageDialogActive: true})
-                    }}/>
-                </LazyLoad>
-                <div className={this.props.classes.icon}>
-                    {imgSrcList.length}
-                </div>
-            </GridListTile>
+            <Grid item id={isBeginning ? "sculpture" : ""} className={this.props.classes.carouselItem}
+                  key={imgSrcList[0]} xs={12} sm={isFullWidth ? 12 : 6} lg={isFullWidth ? 8 : 4}
+                  md={isFullWidth ? 12 : 6}>
+                <GridListTile className={"image-tile"}>
+                    <LazyLoad once>
+                        <img alt="BookEnd" className="art-image full-width" src={imgSrcList[0]} onClick={() => {
+                            this.setState({activeImageSrcs: imgSrcList, isImageDialogActive: true})
+                        }}/>
+                    </LazyLoad>
+                    <div className={this.props.classes.icon}>
+                        {imgSrcList.length}
+                    </div>
+                </GridListTile>
             </Grid>
         );
     }
 
-    isFullScreen(srcs ,index, size, isLarge=false){
-        console.warn(srcs.length -1, size, index, (index === (srcs.length - 1) ));
-        return (index === srcs.length - 6  || (index === (srcs.length - 1) )) ? (isLarge ? 8 : 12) : size
+    isFullScreen(srcs, index, size, isLarge = false) {
+        return (index === srcs.length - 6 || (index === (srcs.length - 1))) ? (isLarge ? 8 : 12) : size
     }
 
     render() {
+        console.warn(fourth);
         const {classes} = this.props;
         return (
             <div id="prints" className={"main-container"}>
                 <NavBar/>
                 <div>
-                  <div className={"image-grid"}>
-                    <Grid container>
-                        {images.map((imgSrc, index) => <Grid item className={this.props.classes.carouselItem} key={index} sm={this.isFullScreen(images,index,6)} xs={12} lg={this.isFullScreen(images,index,4,true)} md={this.isFullScreen(images,index,6)}><GridListTile className={"image-tile"} >
-                                <LazyLoad key={index} once>
-                                    <img className="art-image full-width" src={imgSrc} onClick={() => {
-                                        this.setState({activeImageSrcs: [imgSrc], isImageDialogActive: true})
-                                    }}/>
-                                </LazyLoad>
-                            </GridListTile>
-
-                      </Grid>
-                        )}
-                        {this.renderImageSeriesThumbnail(chinesenewyearImgSrcs)}
-                        {this.renderImageSeriesThumbnail(gigImgSrcs)}
-                        {this.renderImageSeriesThumbnail(boredTeenImgSrcs)}
-                        {this.renderImageSeriesThumbnail(lemanjaImgSrcs)}
-                        {this.renderImageSeriesThumbnail(workhardplayhardImgSrcs)}
-                        {this.renderImageSeriesThumbnail(islandsImgSrcs,false,true)}
-
-                        {this.renderImageSeriesThumbnail(bookEndImageSrcs,true)}
-                        {this.renderImageSeriesThumbnail(tradicaoImgSrcs)}
-                        {this.renderImageSeriesThumbnail(skinnyDippingImgSrcs)}
-                        {this.renderImageSeriesThumbnail(untitledImgSrcs)}
-                        {this.renderImageSeriesThumbnail(bubbleBoysImgSrcs)}
-                        {this.renderImageSeriesThumbnail(holdImgSrcs)}
-                        {this.renderImageSeriesThumbnail(spoonImgSrcs, true, true)}
+                    <div className={"image-grid"}>
+                        <Grid container>
+                            {imageData.map((imgSrc,index) => this.renderImageSeriesThumbnail(imgSrc,index === 21))}
                         </Grid>
-                        </div>
+                    </div>
                     <About/>
                     <Dialog className="image-dialog" open={this.state.isImageDialogActive} onClose={() => {
                         this.setState({isImageDialogActive: false})
                     }}>
                         <Carousel showThumbs={false}>
-                            {this.state.activeImageSrcs.map((imgSrc, index) => <Grid item key={index} lg={12}><img className="art-image full-width" key={index} src={imgSrc}/></Grid>)}
+                            {this.state.activeImageSrcs.map((imgSrc, index) => <Grid item key={index} lg={12}><img
+                                className="art-image full-width" key={index} src={imgSrc}/></Grid>)}
                         </Carousel>
                         {/*<img className="art-image full-width" src={this.state.activeImageSrc}/>*/}
                     </Dialog>
