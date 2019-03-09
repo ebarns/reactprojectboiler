@@ -1,17 +1,20 @@
+.bullet-points {
+  max-width: 60rem;
 
-.about-bullet {
-  display: flex;
-  margin: 1rem;
+  .about-bullet {
+    display: flex;
+    margin: 1rem;
 
-  .mustache-bullet {
-    min-width: 3rem;
-    height: 2rem;
-  }
+    .mustache-bullet {
+      min-width: 3rem;
+      height: 2rem;
+    }
 
-  .bullet {
-    padding-top: 0.3rem;
-    padding-left: 1rem;
-    font-size: 1.25rem;
+    .bullet {
+      padding-top: 0.3rem;
+      padding-left: 1rem;
+      font-size: 1.25rem;
+    }
   }
 }
 
@@ -19,5 +22,27 @@
 .footer {
   width: 100%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.about-carousel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+
+  .carousel {
+    max-width: 50rem;
+
+    .slider-wrapper.axis-horizontal .slider .slide {
+
+      display: flex;
+      align-items: center;
+      flex-direction: unset;
+      flex-flow: unset;
+      justify-content: center;
+      background-color: transparent;
+    }
+  }
 }

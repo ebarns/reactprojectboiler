@@ -3,6 +3,11 @@
   align-items: center;
   flex-wrap: wrap; }
 
+.flex-center-div {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 body {
   background-repeat: repeat;
   background: url("./background/crossword.png"); }

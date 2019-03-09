@@ -75,6 +75,8 @@ import BubbleBath from "./imgs/Prints/BubbleBath.jpg";
 import CelebracaoSolo from "./imgs/Prints/CelebracaoSolo.jpg";
 import untitledPrint from "./imgs/Prints/1C. UntitledSZ2.jpg";
 
+const aboutContext = require.context('./imgs/About', false, /\.(png|JPE?G)$/);
+const aboutImages = aboutContext.keys().map(aboutContext);
 
 const imageData = [
     [voltando],
@@ -172,16 +174,20 @@ class AlternateApp extends Component {
     }
 
     render() {
+        console.warn(aboutImages);
         return (
             <div id="prints" className={"main-container"}>
                 <NavBar/>
                 <div>
                     <div className={"image-grid"}>
                         <Grid container>
-                            {imageData.map((imgSrc,index) => this.renderImageSeriesThumbnail(imgSrc,index === 21))}
+                            {imageData.map((imgSrc, index) => this.renderImageSeriesThumbnail(imgSrc, index === 21))}
                         </Grid>
                     </div>
-                    <About/>
+                    <About aboutImages={<Carousel className={"about-carousel"} showThumbs={false}>
+                        {aboutImages.map((imgSrc, index) => <Grid item key={index} lg={8}><img
+                            className="art-image full-width" key={index} src={imgSrc}/></Grid>)}
+                    </Carousel>}/>
                     <Dialog className="image-dialog" open={this.state.isImageDialogActive} onClose={() => {
                         this.setState({isImageDialogActive: false})
                     }}>
